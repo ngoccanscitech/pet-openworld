@@ -1,0 +1,287 @@
+
+Deprecated: The each() function is deprecated. This message will be suppressed on further calls in C:\Users\lenovo\AppData\Roaming\Sublime Text\Packages\PHPTools\php.tools\codeFormatter.php on line 54
+@php
+$headerMenuTop = Menu::getByName('Header-menu-top');
+$headerMenuBottom = Menu::getByName('Header-menu-bottom');
+$headerMenuBottomDropdown = Menu::getByName('Header-menu-bottom-dropdown');
+@endphp
+
+        <!-- Start header -->
+<div id="header">
+    <div class="container">
+
+        <!-- Navbar -->
+        <!-- Menu mobile -->
+        <div class="menu-mobile">
+            <nav class="navbar navbar-dark">
+                <a href="/" class="navbar-brand">Navbar</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent">
+                    <i class="fa fa-bars hamburger-icon" aria-hidden="true"></i>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="#">Trang chủ</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+                               aria-haspopup="true" aria-expanded="false">
+                                Nghiên cứu
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="#">Action</a>
+                                <a class="dropdown-item" href="#">Another action</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="#">Something else here</a>
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="category.html">Thư viện sách</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Tài liệu</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Tổng hợp thành viên</a>
+                        </li>
+                    </ul>
+                    <form action="#" class="form-inline my-2 my-lg-0">
+                        <input type="text" class="form-control mr-sm-2" type="search" placeholder="Tìm kiếm sách" aria-label="Search">
+                        <button class="btn btn-outline-light my-2 my-sm-0 btn-search-mobile">Tìm kiếm</button>
+                    </form>
+                </div>
+            </nav>
+        </div>
+
+        <!-- Header Top -->
+        <div class="row">
+            <div id="header-menu-top" class="col-lg-12 col-md-12 col-sm-12">
+                <ul class="nav justify-content-end">
+                    @foreach($headerMenuTop as $menu)
+                        <li class="nav-item"><a class="nav-link" href="{{ url($menu['link']) }}">{{ $menu['label'] }}</a></li>
+                    @endforeach
+                </ul>
+            </div>
+        </div>
+        <!-- End Header Top -->
+
+        <!-- Header between -->
+        <div class="header-menu-between row">
+            <div id="logo" class="col-lg-3 col-md-3 col-sm-12 d-flex align-self-center">
+                <a href="/"><img src="{{ asset(setting_option('logo')) }}" alt=""></a>
+            </div>
+            <div id="search" class="col-lg-6 col-md-6 col-sm-12">
+                <form method="get" action="{{ route('search') }}" class="form-inline my-2 my-lg-0 add-button">
+                    <!-- Search-->
+                     <div class="input-group d-none d-lg-flex flex-nowrap mx-4">
+                        <select class="form-select flex-shrink-0" name="type" style="width: 8rem;">
+                           <option>Tất cả</option>
+                          <option value="research">Nghiên cứu</option>
+                          <option value="document">Tài liệu</option>
+                          <option value="product">Thư viện</option>
+                        </select>
+                        <i class="ci-search position-absolute top-50 end-0 translate-middle-y me-3"></i>
+                        <input class="form-control w-100" name="keyword" type="text" placeholder="Search for products">
+                     </div>
+                    <!-- <div class="dropdown dropdown-input-search">
+                        <button class="btn btn-secondary dropdown-toggle btn-menu-search" type="button" id="dropdownMenuButton"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Tất cả
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <a class="dropdown-item" href="#">Action</a>
+                            <a class="dropdown-item" href="#">Another action</a>
+                            <a class="dropdown-item" href="#">Something else here</a>
+                        </div>
+                    </div>
+                    <input class="form-control mr-sm-2 input-search" type="search" placeholder="Search" aria-label="Search">
+                    <a class="a-icon-input-search" href="#"><i class="ti-search icon-input-search "></i></a> -->
+                </form>
+            </div>
+            <div id="cart" class="col-lg-3 col-md-3 col-sm-12 d-flex align-items-center justify-content-end">
+                <ul class="nav justify-content-end">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('wishlist') }}"><img src="theme/images/heart.svg" alt=""></a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link" href="{{ route('cart') }}" ><img class="icon-header"src="theme/images/Handbag.svg" alt=""></a>
+                        @include($templatePath .'.cart.cart-mini')
+                    </li>
+                    <li class="nav-item ">
+                        <a class="nav-link" href="#signin-modal" data-bs-toggle="modal"><img src="theme/images/user.svg" alt=""></a>
+
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <!--End Header between -->
+
+
+        <!-- Header bottom -->
+        <div class="row">
+            <div id="header-menu-bottom" class="col-lg-12 col-md-12 col-sm-12">
+                @include($templatePath .'.layouts.menu-main')
+            </div>
+        </div>
+        <!-- End Header Bottom -->
+
+        <!-- End Nav Bar -->
+    </div>
+</div>
+<!-- End header -->
+
+@if(!Auth::check())
+<div class="modal fade" id="signin-modal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header bg-secondary">
+                <ul class="nav nav-tabs card-header-tabs" role="tablist">
+                    <li class="nav-item"><a class="nav-link fw-medium active" href="#signin-tab" data-bs-toggle="tab" role="tab" aria-selected="true"><i class="ci-unlocked me-2 mt-n1"></i>Đăng nhập</a></li>
+                    <li class="nav-item"><a class="nav-link fw-medium" href="#signup-tab" data-bs-toggle="tab" role="tab" aria-selected="false"><i class="ci-user me-2 mt-n1"></i>Đăng ký</a></li>
+                </ul>
+                <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body tab-content py-4">
+                <form action="" class="needs-validation tab-pane fade active show" autocomplete="off" novalidate="" id="signin-tab">
+                    <div class="list-content-loading">
+                        <div class="half-circle-spinner">
+                            <div class="circle circle-1"></div>
+                            <div class="circle circle-2"></div>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label" for="si-email">Email</label>
+                        <input class="form-control" type="email" id="si-email" name="email" placeholder="text@example.com" required="">
+                        <div class="invalid-feedback">Nhập địa chỉ Email của bạn.</div>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label" for="si-password">Mật khẩu</label>
+                        <div class="password-toggle">
+                            <input class="form-control" type="password" id="si-password" name="password" required="">
+                            <label class="password-toggle-btn" aria-label="Show/hide password">
+                            <input class="password-toggle-check" type="checkbox"><span class="password-toggle-indicator"></span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="mb-3 d-flex flex-wrap justify-content-between">
+                        <div class="form-check mb-2">
+                            <input class="form-check-input" type="checkbox" id="si-remember">
+                            <label class="form-check-label" for="si-remember">Ghi nhớ đăng nhập</label>
+                        </div>
+                        <a class="fs-sm" href="#">Quên mật khẩu?</a>
+                    </div>
+                    <div class="error-message" style="display: none;"></div>
+                    <button class="btn btn-primary d-block w-100 btn-login" type="button">Đăng nhập</button>
+                </form>
+                <form class="needs-validation tab-pane fade" action="{{route('postRegisterCustomer')}}" autocomplete="off" novalidate="" id="signup-tab">
+                    <div class="list-content-loading">
+                        <div class="half-circle-spinner">
+                            <div class="circle circle-1"></div>
+                            <div class="circle circle-2"></div>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label" for="su-name">Họ tên</label>
+                        <input class="form-control" type="text" id="su-name" name="fullname" placeholder="Họ tên" required="">
+                        <div class="invalid-feedback">Vui lòng nhập họ tên.</div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="su-email">Email</label>
+                        <input class="form-control" type="email" id="su-email" name="email" required="">
+                        <div class="invalid-feedback">Nhập địa chỉ Email của bạn.</div>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label" for="su-password">Mật khẩu</label>
+                        <div class="password-toggle">
+                            <input class="form-control" type="password" id="password" name="password" required="">
+                            <label class="password-toggle-btn" aria-label="Show/hide password">
+                            <input class="password-toggle-check" type="checkbox"><span class="password-toggle-indicator"></span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label" for="su-password-confirm">Xác nhận mật khẩu</label>
+                        <div class="password-toggle">
+                            <input class="form-control" type="password" id="su-password-confirm" name="password_confirmation" required="">
+                            <label class="password-toggle-btn" aria-label="Show/hide password">
+                            <input class="password-toggle-check" type="checkbox"><span class="password-toggle-indicator"></span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="mb-3 col-12">
+                        <div class="error-message text-center " style="color: #f00;"></div>
+                    </div>
+                    <button class="btn btn-primary d-block w-100 btn-register" type="button">Đăng ký</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@push('after-footer')
+<script>
+    jQuery(document).ready(function($) {
+        $("#signup-tab").validate({
+          onfocusout: false,
+          onkeyup: false,
+          onclick: false,
+          rules: {
+              'su-name': "required",
+              'su-phone': "required",
+              'su-email': "required",
+              'su-password': "required",
+              'su-password-confirm': "required",
+          },
+          messages: {
+                'su-name': "Nhập họ tên",
+              'su-phone': "Nhập số điện thoại",
+              'su-email': "Nhập địa chỉ E-mail",
+              'su-password' : "Nhập mật khẩu",
+              'su-password-confirm' : "Nhập lại mật khẩu"
+          },
+          errorElement : 'div',
+          errorLabelContainer: '.errorTxt',
+          invalidHandler: function(event, validator) {
+              $('html, body').animate({
+                  scrollTop: 0
+              }, 500);
+          }
+        });
+    $('.btn-register').click(function(event) {
+        form_id = $('#signup-tab');
+        if(form_id.valid()){
+
+            form_id.find('.list-content-loading').show();
+            var form = document.getElementById('signup-tab');
+
+            var fdnew = new FormData(form);
+
+            axios({
+                   method: 'POST',
+                   url: form_id.prop("action"),
+               data: fdnew,
+
+            }).then(res => {
+                var url_back = '';
+
+                if (res.data.error == 0) {
+                    url_back = res.data.redirect_back;
+                    form_id.html(res.data.view);
+                    $('#signin-modal').on('hidden.bs.modal', function (e) {
+                        window.location.href= '/';
+                    })
+                }
+                else{
+                    form_id.find('.error-message').html(res.data.msg);
+                    form_id.find('.list-content-loading').hide();
+                }
+
+            }).catch(e => console.log(e));
+        }
+    });
+
+    });
+</script>
+@endpush
+@endif

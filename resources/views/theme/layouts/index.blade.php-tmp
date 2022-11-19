@@ -1,0 +1,109 @@
+
+Deprecated: The each() function is deprecated. This message will be suppressed on further calls in C:\Users\lenovo\AppData\Roaming\Sublime Text\Packages\PHPTools\php.tools\codeFormatter.php on line 54
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      <!-- <title>{{ setting_option('company_name') }}</title> -->
+      <meta name="description" content="description">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <!-- Favicon -->
+      <link rel="shortcut icon" href="{{ asset(setting_option('favicon')) }}" />
+      <!-- SEO meta -->
+      @yield('seo')
+      <!-- Bootstrap CSS Cannn-->
+      <link rel="preconnect" href="https://fonts.googleapis.com">
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+      <!-- <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;500&display=swap" rel="stylesheet"> -->
+      <link href="https://fonts.googleapis.com/css2?family=Oooh+Baby&display=swap" rel="stylesheet">
+      <link href="https://fonts.googleapis.com/css2?family=Oooh+Baby&family=Rowdies:wght@700&display=swap" rel="stylesheet">
+      <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+      <!-- <link rel="stylesheet" href="{{url($templateFile .'/css/bootstrap.min.css')}}"> -->
+      <link rel="stylesheet" href="{{url($templateFile .'/fonts/themify-icons/themify-icons.css')}}">
+
+      <link rel="stylesheet" href="{{ asset('css/sweetalert2.min.css') }}">
+      <link rel="stylesheet" href="{{ asset($templateFile .'/plugins/owl-carousel/assets/owl.carousel.min.css') }}">
+      <link rel="stylesheet" href="{{ asset($templateFile .'/plugins/owl-carousel/assets/owl.theme.default.min.css') }}">
+
+      <link rel="stylesheet" href="{{ url($templateFile .'/css/simplebar.min.css') }}">
+      <link rel="stylesheet" href="{{ url($templateFile .'/plugins/tiny-slider/tiny-slider.css') }}">
+      <link rel="stylesheet" href="{{ url($templateFile .'/css/drift-basic.min.css') }}">
+
+      <link rel="stylesheet" href="{{ url($templateFile .'/css/theme.min.css') }}">
+      <link rel="stylesheet" href="{{ url($templateFile .'/css/style.css?ver='. time()) }}">
+      <link rel="stylesheet" href="{{url($templateFile .'/fonts/font-awesome.min.css')}}">
+      @stack('head-style')
+      @stack('head-script')
+   </head>
+   <body>
+      <main class="page-wrapper">
+      </main>
+      @php $headerMenu = Menu::getByName('Menu-main'); @endphp
+      @php $headerMenuCannn = Menu::getByName('menu-cannn'); @endphp
+      @include($templateFile .'.layouts.header')
+      {{-- Module top --}}
+      @section('top')
+         @include($templatePath.'.layouts.block_top')
+      @show
+      {{-- //Module top --}}
+      <!-- Start Main -->
+
+      <div class="container">
+         <!-- Research, Document, Library 8 - 4 -->
+         <div class="row">
+            <div class="col-lg-8 col-md-8 col-sm-12">
+               {{-- Module left --}}
+               @section('left')
+                  @include($templatePath.'.layouts.block_left')
+               @show
+               {{-- //Module left --}}
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-12">
+               {{-- Module right --}}
+               @section('right')
+                  @include($templatePath.'.layouts.block_right')
+               @show
+               {{-- //Module right --}}
+            </div>
+         </div>
+      </div>
+      <div id="main">
+         <div class="container">
+            @yield('content')
+         </div>
+      </div>
+      {{-- Block footer --}}
+      @section('block_bottom')
+         @include($templatePath.'.layouts.block_bottom')
+      @show
+      {{-- //Block footer --}}
+      @include($templateFile .'.layouts.footer')
+      <!-- Including Jquery -->
+      <!-- Optional JavaScript Off Cann -->
+      <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+      <script src="{{asset($templateFile.'/js/jquery.min.js')}}"></script>
+      <!-- <script src="{{asset($templateFile.'/js/popper.min.js')}}"></script> -->
+      <!-- <script src="{{asset($templateFile.'/js/bootstrap.min.js')}}"></script> -->
+
+
+      <script src="/js/axios.min.js"></script>
+      <script src="/js/sweetalert2.all.min.js"></script>
+      <script src="/js/jquery.validate.min.js"></script>
+
+      <script src="{{ asset($templateFile .'/plugins/simplebar.min.js') }} "></script>
+      <script src="{{ asset($templateFile .'/plugins/owl-carousel/owl.carousel.min.js') }}"></script>
+      <script src="{{ asset($templateFile .'/plugins/bootstrap.bundle.min.js') }} "></script>
+      <script src="{{ asset($templateFile .'/plugins/smooth-scroll.polyfills.min.js') }} "></script>
+      <script src="{{ asset($templateFile .'/plugins/Drift.min.js') }} "></script>
+      <script src="{{ asset($templateFile .'/plugins/tiny-slider/tiny-slider.js') }} "></script>
+      <script src="{{ asset($templateFile .'/js/theme.min.js') }}"></script>
+
+      <!-- jQuery UI -->
+      <script src="{{asset($templateFile.'/js/jquery-ui.min.js')}}"></script>
+      <script src="{{asset($templateFile.'/js/myscript.js')}}"></script>
+      <script src="{{ asset($templateFile .'/js/custom.js?ver=1.62') }}"></script>
+      <!-- Optional End JavaScript Off Cann -->
+      @stack('after-footer')
+   </body>
+</html>

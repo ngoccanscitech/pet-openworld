@@ -1,0 +1,20 @@
+
+Deprecated: The each() function is deprecated. This message will be suppressed on further calls in C:\Users\lenovo\AppData\Roaming\Sublime Text\Packages\PHPTools\php.tools\codeFormatter.php on line 54
+@isset($data)
+	@php extract($data) @endphp
+
+	@if($id)
+	   @php $sliders = \App\Model\Slider::where('slider_id', $id)->get(); @endphp
+	   @if($sliders->count())
+		   @foreach($sliders as $item)
+		   <div class="mt-35 notify-sale">
+	         <a href="{{ $item->link ?? 'javascript:;' }}" title="{{ $item->name }}">
+	            <div class="card">
+	              <img src="{{ asset($item->src) }}" alt="" class="card-img">
+	            </div>
+	         </a>
+	      </div>
+	      @endforeach
+	   @endif
+	@endif
+@endisset
